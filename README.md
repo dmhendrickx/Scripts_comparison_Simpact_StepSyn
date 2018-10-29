@@ -8,7 +8,6 @@
 #### Required - parameter fitting Simpact and StepSyn
 #### - CRAN packages: ggplot2, mgcv, lattice, minerva
 #### - ARF package (to run with R 2.3.1): http://www.rci.rutgers.edu/~cabrera/dm/DM.html
-#### - multiplot script: http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
 #### Required - Simpact fitting only
 #### - Simpact program: http://www.simpact.org/
 #### - readthedata.R from RSimpactHelp repository: https://github.com/wdelva/RSimpactHelp
