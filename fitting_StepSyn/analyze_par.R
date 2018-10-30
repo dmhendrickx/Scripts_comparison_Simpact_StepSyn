@@ -2,7 +2,11 @@
 #This script is an example for 10000 simulations stored in 10 
 #folders.
 #The script extracts the input for the parameter fitting from the
-#output files of the simulations and then performs the parameter fitting procedure.
+#output files of the simulations and then performs the parameter fitting procedure
+#in Castro Sanchez AY, Aerts M, Shkedy Z, Vickerman P, Faggiano 
+#F, Salamina G, et al. A mathematical model for HIV and 
+#hepatitis C co-infection and its assessment from a 
+#statistical perspective. Epidemics. 2013;5(1):56-66.
 #----------------------------------------------------------------
 
 #read the data
