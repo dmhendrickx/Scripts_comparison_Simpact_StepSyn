@@ -2,7 +2,7 @@
 #This script is an example for 10000 simulations stored in 10 
 #folders.
 #The script extracts the input for the parameter fitting from the
-#output files of the simulations and then performs the parameter #fitting procedure.
+#output files of the simulations and then performs the parameter fitting procedure.
 #----------------------------------------------------------------
 
 #read the data
