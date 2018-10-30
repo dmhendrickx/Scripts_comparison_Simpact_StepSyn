@@ -13,7 +13,7 @@
 #### - readthedata.R from RSimpactHelp repository: https://github.com/wdelva/RSimpactHelp
 #### Required - StepSyn fitting only
 #### - StepSyn program: To become Open Access and freely available after publication of a manuscript in preparation
-####------------------------------------------------------------------------------------------------------------------------------------
+#### -----------------------------------------------------------------------------------------------------------------------------------
 
 
 
