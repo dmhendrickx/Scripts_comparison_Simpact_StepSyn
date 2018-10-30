@@ -1,6 +1,11 @@
-#Script for running the model fitting procedure described in #Castro Sanchez AY, Aerts M, Shkedy Z, Vickerman P, Faggiano #F, Salamina G, et al. A mathematical model for HIV and #hepatitis C co-infection and its assessment from a #statistical perspective. Epidemics. 2013;5(1):56-66.
+#Script for running the model fitting procedure described in 
+#Castro Sanchez AY, Aerts M, Shkedy Z, Vickerman P, Faggiano 
+#F, Salamina G, et al. A mathematical model for HIV and 
+#hepatitis C co-infection and its assessment from a 
+#statistical perspective. Epidemics. 2013;5(1):56-66.
 #-------------------------------------------------------------
-#After copying workspace_analyze_par.RData (output #concatenate_par.R) from the HPC cluster, you can run the #script on your computer.
+#After copying workspace_analyze_par.RData (output 
+#concatenate_par.R) from the HPC cluster, you can run the #script on your computer.
 #-------------------------------------------------------------
 
 load("[PATH_TO_YOUR_WORK_DIRECTORY]/workspace_analyze_par.RData")
