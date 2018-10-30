@@ -1,4 +1,4 @@
-#Copy the folders with your simulations from the HPC cluster to #your computer.
+#Copy the folders with your simulations from the HPC cluster to your computer.
 #This script is an example for 10000 simulations stored in 10 
 #folders.
 #The script extracts the input for the parameter fitting from the
