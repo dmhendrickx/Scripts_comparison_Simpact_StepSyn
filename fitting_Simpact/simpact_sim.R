@@ -2,12 +2,11 @@
 #e.g. for 100 simulations to be saved in subdirectory sim_1_100
 #start=1, end = 100, subdir = sim_1_100
 #---------------------------------------------------------------
-
 simpact_sim<-function(start,end,subdir){
-maindir<-"[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]"
+maindir<-"[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/Simpact1g"
 setwd(file.path(maindir))
 library(RSimpactCyan)
-load("workspace_LHS.RData")# output latin_hypercube.R
+load("workspace_LHS.RData")
 source('readthedata.R', encoding = 'UTF-8')
 
 dir.create(file.path(maindir,subdir))
@@ -15,6 +14,7 @@ destdir<-file.path(maindir,subdir)
 setwd(file.path(destdir))
 
 cfg <- list()
+cfg["debut.debutage"]<-0
 cfg["population.simtime"] <- 35
 cfg["birth.boygirlratio"] <- 0.54
 cfg["population.nummen"] <- 2500
@@ -30,7 +30,7 @@ cfg["formationmsm.hazard.agegap.baseline"]<-0
 cfg["dissolutionmsm.alpha_0"]<-0
 cfg["hivseed.type"]<- "amount"
 cfg["person.survtime.logoffset.dist.type"]<-"discrete.csv.twocol"
-cfg["person.survtime.logoffset.dist.discrete.csv.twocol.file"]<-"[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/distr.csv"
+cfg["person.survtime.logoffset.dist.discrete.csv.twocol.file"]<-"[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/Simpact1g/distr.csv"
 cfg["person.hsv2.a.dist.type"]<-"fixed"
 cfg["person.hsv2.a.dist.fixed.value"]<--2.550
 cfg["hsv2transmission.hazard.b"]<--0.12
@@ -43,6 +43,7 @@ cfg["mortality.normal.weibull.scale"]<-600 # no mortality
 cfg["birth.pregnancyduration.dist.fixed.value"]<-36 # no natality
 cfg["hivtransmission.maxageref.diff"]<-Inf
 cfg["population.maxevents"]<-cfg$population.simtime*cfg$population.nummen*15 #If 15 events happen per person per year, something's wrong.
+cfg["hivseed.amount"]<-23
 
 #Start the clock
 start.time <- Sys.time()
@@ -52,11 +53,10 @@ not_NA <-vector(mode = "logical",length=end)
 
 for (i in start:end){
   set.seed(12345)
-  cfg["hivseed.amount"]<-Y[i,1]
-  cfg["hivtransmission.param.a"]<-Y[i,2]
-  cfg["hivtransmission.param.e1"]<-Y[i,3]
-  cfg["hivtransmission.param.e2"]<-Y[i,4]
-  cfg["hivtransmission.param.f1"]<-Y[i,5]
+  cfg["hivtransmission.param.a"]<-Y[i,1]
+  cfg["hivtransmission.param.e1"]<-Y[i,2]
+  cfg["hivtransmission.param.e2"]<-Y[i,3]
+  cfg["hivtransmission.param.f1"]<-Y[i,4]
   res_new <- try(simpact.run(cfg,file.path(destdir),identifierFormat = "%T-%r%r%r%r%r%r%r%r"))
   if (class(res_new) != "try-error"){
     not_NA[i]="TRUE"

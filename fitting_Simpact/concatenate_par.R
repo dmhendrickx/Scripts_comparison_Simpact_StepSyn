@@ -1,13 +1,12 @@
-
 #If your output is stored in different folders, you can 
 #apply par_space1.R to each folder and then concatenate the 
 #resulting workspaces into one workspace using this script.
 #Here, an example is given for 100 folders of 100 simulations.
 #-------------------------------------------------------------
 
-setwd("[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]")
+setwd("[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/Simpact1g")
 
-load(paste0("[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/sim_1_100/workspace_par.RData"))
+load(paste0("[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/Simpact1g/sim_1_100/workspace_par.RData"))
 
 prev_HIV_f_estim_new <- prev_HIV_f_estim
 prev_HIV_m_estim_new <- prev_HIV_m_estim
@@ -20,7 +19,7 @@ hiv_f1_new <- hiv_f1
 
 for (i in 2:100){
   print(i)
-  load(paste0("[PATH_TO_WORK_DIRECTOTY_ON_HPC_CLUSTER]/sim_",100*i-99,"_",100*i,"/workspace_par.RData"))
+  load(paste0("[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]/Simpact1g/sim_",100*i-99,"_",100*i,"/workspace_par.RData"))
   prev_HIV_f_estim_new <- rbind(prev_HIV_f_estim_new,prev_HIV_f_estim)
   prev_HIV_m_estim_new <- rbind(prev_HIV_m_estim_new,prev_HIV_m_estim)
   prev_HSV2_f_estim_new <- c(prev_HSV2_f_estim_new,prev_HSV2_f_estim)
