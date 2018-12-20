@@ -1,112 +1,130 @@
-#Copy the folders with your simulations from the HPC cluster to your computer.
+#Copy the folders with your simulations from the HPC cluster to 
+#your computer.
 #This script is an example for 10000 simulations stored in 10 
 #folders.
 #The script extracts the input for the parameter fitting from the
-#output files of the simulations and then performs the parameter fitting procedure
-#in Castro Sanchez AY, Aerts M, Shkedy Z, Vickerman P, Faggiano 
-#F, Salamina G, et al. A mathematical model for HIV and 
-#hepatitis C co-infection and its assessment from a 
-#statistical perspective. Epidemics. 2013;5(1):56-66.
+#output files of the simulations and then performs the parameter 
+#fitting procedure.
 #----------------------------------------------------------------
-
 #read the data
-zresweekPrSTDs<-list()
+prevalence_males=matrix(data=NA,nrow=10000,ncol=26)
+prevalence_females=matrix(data=NA,nrow=10000,ncol=26)
+hsv2_females=vector(mode = "numeric",length=10000)
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_1_1000")
 for (i in 1:1000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_1001_2000")
 for (i in 1001:2000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_2001_3000")
 for (i in 2001:3000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_3001_4000")
 for (i in 3001:4000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_4001_5000")
 for (i in 4001:5000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_5001_6000")
 for (i in 5001:6000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_6001_7000")
 for (i in 6001:7000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_7001_8000")
 for (i in 7001:8000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_8001_9000")
 for (i in 8001:9000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
+  }
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
 }
 setwd("[PATH_TO_WORK_DIRECTORY]/sim_9001_10000")
 for (i in 9001:10000){
-  print(i)
-  zresweekPrSTDs_new<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
-  zresweekPrSTDs<-append(zresweekPrSTDs,list(zresweekPrSTDs_new))
-  assign("zresweekPrSTDs",zresweekPrSTDs,.GlobalEnv)
-}
-
-#yearly prevalence HIV
-prevalence_males=matrix(data=NA,nrow=10000,ncol=26)
-prevalence_females=matrix(data=NA,nrow=10000,ncol=26)
-
-for (j in 1:10000){
-  prevalence_males[j,1]=zresweekPrSTDs[[j]]$males.p.hiv.str1[1]
-  prevalence_females[j,1]=zresweekPrSTDs[[j]]$females.p.hiv.str1[1]
-  
-  for (i in 1:25){
-    prevalence_males[j,i+1]=zresweekPrSTDs[[j]]$males.p.hiv.str1[52*i]
-    prevalence_females[j,i+1]=zresweekPrSTDs[[j]]$females.p.hiv.str1[52*i]
+  zresweekPrSTDs<-read.csv(paste0("zresWeekPrSTDs",i,".result"),sep="")
+  prevalence_males[i,1]=zresweekPrSTDs$males.p.hiv.str1[1]
+  prevalence_females[i,1]=zresweekPrSTDs$females.p.hiv.str1[1]
+  for (j in 1:25){
+    prevalence_males[i,j+1]=zresweekPrSTDs$males.p.hiv.str1[52*j]
+    prevalence_females[i,j+1]=zresweekPrSTDs$females.p.hiv.str1[52*j]
   }
-} #end for j in 1:10000
-
-#prevalence HSV2 females in 1997
-hsv2_females=vector(mode = "numeric",length=10000)
-for (j in 1:10000){
-hsv2_females[j]=zresweekPrSTDs[[j]]$females.p.hsv2[52*17]
-} 
-
-rm(zresweekPrSTDs,zresweekPrSTDs_new)
+  hsv2_females[i]=zresweekPrSTDs$females.p.hsv2[52*17]
+}
+rm(zresweekPrSTDs)
 save.image("[PATH_TO_WORK_DIRECTORY]/workspace_fitting.RData")
 
-males<-c(0.497,0.928,1.481,1.342,0.918,2.111,1.915,3.383,4.100,3.876)
-females<-c(0.946,1.765,2.818,2.553,1.746,4.015,3.643,6.435,7.800,7.374)
+males<-c(0.609,1.133,1.802,1.639,1.115,2.574,2.334,4.127,4.100,4.728)
+females<-c(1.159,2.154,3.427,3.117,2.122,4.896,4.439,7.850,7.800,8.992)
 hsv2_real=50.8
 males_est<-prevalence_males[9:18]
 females_est<-prevalence_females[9:18]
@@ -147,25 +165,27 @@ d<-data.frame(x=Y[,1])
 d2<-data.frame(x=baseline_1pc)
 p<-ggplot(data = d, mapping = aes(x = x,linetype=0)) + geom_density(linetype=2)
 p1<-p + labs(x = "baseline")
-p2<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
+p2a<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
 
 d<-data.frame(x=Y[,2])
 d2<-data.frame(x=fm_ratio_1pc)
 p<-ggplot(data = d, mapping = aes(x = x,linetype=0)) + geom_density(linetype=2)
 p1<-p + labs(x = "fm_ratio")
-p2<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
+p2b<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
 
 d<-data.frame(x=Y[,3])
 d2<-data.frame(x=hsv2_index_1pc)
 p<-ggplot(data = d, mapping = aes(x = x,linetype=0)) + geom_density(linetype=2)
 p1<-p + labs(x = "hsv2_index")
-p2<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
+p2c<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
 
 d<-data.frame(x=Y[,4])
 d2<-data.frame(x=hsv2_exposed_1pc)
 p<-ggplot(data = d, mapping = aes(x = x,linetype=0)) + geom_density(linetype=2)
 p1<-p + labs(x = "hsv2_exposed")
-p2<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
+p2d<-p1 + geom_density(data=d2, mapping = aes(x = x), linetype=1,adjust=2)
+
+multiplot(p2a,p2b,p2c,p2d,cols=2)
 
 #Activity region finder
 output_rel<-vector(mode="numeric",length=10000)
@@ -175,6 +195,8 @@ rm(list=setdiff(ls(),"dataframe_arf"))
 save.image("workspace_arf.RData")
 
 # In R-2.3.1
+# setwd("[PATH_TO_WORK_DIRECTORY]")
+# load("[PATH_TO_WORK_DIRECTORY]/workspace_arf.RData")
 # hf.arf = f.arf(output_rel~baseline+fm_ratio+hsv2_index+hsv2_exposed,data=dataframe_arf)
 # write.csv(hf.arf$tree,file="ARF1.csv")
 
@@ -211,7 +233,7 @@ plot(scale.exponent, aic, type="b",main="AIC")
 plot(scale.exponent, bic, type="b", main="BIC")
 dev.off()
 
-#AIC minimal 10^0=1, BIC minimal 10^2=100
+#AIC minimal 10^0=1, BIC minimal 10^3=1000
 opt.tuning.scale<-1
 opt.sp<-opt.tuning.scale*sp
 
@@ -219,7 +241,7 @@ gammod1<-gam(output_rel~s(baseline)+s(fm_ratio)+s(hsv2_index)+s(hsv2_exposed), d
              family=binomial(link=logit),
              sp=opt.sp)
 
-opt.tuning.scale<-100
+opt.tuning.scale<-1000
 opt.sp<-opt.tuning.scale*sp
 
 gammod2<-gam(output_rel~s(baseline)+s(fm_ratio)+s(hsv2_index)+s(hsv2_exposed), data=dataframe_arf,
@@ -232,40 +254,43 @@ library(ggplot2)
 pred1<-predict.gam(gammod1,dataframe_arf,type="response")
 
 d=data.frame(x=dataframe_arf$baseline,y=pred1)
-p1<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="baseline",y="predicted probability of low relative sum of squared errors")
+p1<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="baseline",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$fm_ratio,y=pred1)
-p2<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="fm_ratio",y="predicted probability of low relative sum of squared errors")
+p2<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="fm_ratio",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$hsv2_index,y=pred1)
-p3<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_index",y="predicted probability of low relative sum of squared errors")
+p3<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_index",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$hsv2_exposed,y=pred1)
-p4<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_exposed",y="predicted probability of low relative sum of squared errors")
+p4<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_exposed",y="predicted probability of low RSSE")
 
 pred2<-predict.gam(gammod2,dataframe_arf,type="response")
 
 d=data.frame(x=dataframe_arf$baseline,y=pred2)
-p5<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="baseline",y="predicted probability of low relative sum of squared errors")
+p5<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="baseline",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$fm_ratio,y=pred2)
-p6<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="fm_ratio",y="predicted probability of low relative sum of squared errors")
+p6<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="fm_ratio",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$hsv2_index,y=pred2)
-p7<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_index",y="predicted probability of low relative sum of squared errors")
+p7<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_index",y="predicted probability of low RSSE")
 
 d=data.frame(x=dataframe_arf$hsv2_exposed,y=pred2)
-p8<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_exposed",y="predicted probability of low relative sum of squared errors")
+p8<-ggplot(d,aes(x=x,y=y)) + geom_point(alpha=1, color="black") + geom_smooth(alpha=0) + labs(x="hsv2_exposed",y="predicted probability of low RSSE")
 
 save.image("workspace_gam.RData")
 
-#caculation MIC
+multiplot(p1,p2,p3,p4,cols=2)
+multiplot(p5,p6,p7,p8,cols=2)
+
+#calculation MIC
 library(minerva)
-mine(baseline_1pc,fm_ratio_1pc)
-mine(baseline_1pc,hsv2_index_1pc)
-mine(baseline_1pc,hsv2_exposed_1pc)
+mine(baseline_1pc,fm_ratio_1pc)$MIC
+mine(baseline_1pc,hsv2_index_1pc)$MIC
+mine(baseline_1pc,hsv2_exposed_1pc)$MIC
 
-mine(fm_ratio_1pc,hsv2_index_1pc)
-mine(fm_ratio_1pc,hsv2_exposed_1pc)
+mine(fm_ratio_1pc,hsv2_index_1pc)$MIC
+mine(fm_ratio_1pc,hsv2_exposed_1pc)$MIC
 
-mine(hsv2_index_1pc,hsv2_exposed_1pc)
+mine(hsv2_index_1pc,hsv2_exposed_1pc)$MIC

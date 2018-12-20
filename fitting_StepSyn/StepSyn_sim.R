@@ -2,7 +2,6 @@
 #e.g. for 1000 simulations to be saved in subdirectory sim_1_1000
 #start=1, end = 1000, subdir = sim_1_1000
 #-------------------------------------------------------------
-
 StepSyn_sim<-function(start,end,subdir){
   maindir<-"[PATH_TO_WORK_DIRECTORY_ON_HPC_CLUSTER]"
   setwd(file.path(maindir))
