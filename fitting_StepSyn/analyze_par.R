@@ -126,8 +126,6 @@ save.image("[PATH_TO_WORK_DIRECTORY]/workspace_fitting.RData")
 males<-c(0.609,1.133,1.802,1.639,1.115,2.574,2.334,4.127,4.100,4.728)
 females<-c(1.159,2.154,3.427,3.117,2.122,4.896,4.439,7.850,7.800,8.992)
 hsv2_real=50.8
-males_est<-prevalence_males[9:18]
-females_est<-prevalence_females[9:18]
 time<-seq(1989,1998,by=1)
 
 rel_diff_ssq_m=vector(mode="numeric",length=10000)
@@ -135,8 +133,8 @@ rel_diff_ssq_f=vector(mode="numeric",length=10000)
 rel_diff_ssq=vector(mode="numeric",length=10000)
 
 for (k in 1:10000){
-  estim_m=prevalence_males[k,9:18]
-  estim_f=prevalence_females[k,9:18]
+  estim_m=prevalence_males[k,10:19]
+  estim_f=prevalence_females[k,10:19]
   rel_diff_ssq_m[k]=sum(((males-estim_m)^2)/(males^2))
   rel_diff_ssq_f[k]=sum(((females-estim_f)^2)/(females^2)) + ((hsv2_real-hsv2_females[k])^2)/(hsv2_real^2)
   rel_diff_ssq[k]=rel_diff_ssq_m[k]+rel_diff_ssq_f[k]
