@@ -1,6 +1,9 @@
 ### Scripts_comparison_Simpact_StepSyn
 
-#### This repository contains the R scripts used to fit the StepSyn and Simpact models 
+#### This repository contains 
+#### - the R scripts used to fit the StepSyn and Simpact models 
+#### - the simulated data (HIV prevalences and cumulative HIV incidences)
+####   rows: simulations; columns: time points
 #### The scripts are based on the fitting procedure described in
 #### Castro Sanchez AY, Aerts M, Shkedy Z, Vickerman P, Faggiano F, Salamina G, et al. 
 #### A mathematical model for HIV and hepatitis C co-infection and its assessment from a statistical perspective. 
